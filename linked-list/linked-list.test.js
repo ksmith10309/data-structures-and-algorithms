@@ -4,11 +4,11 @@ const LinkedList = require('./linked-list.js');
 
 const testlist = new LinkedList();
 
-describe("Testing LinkedList constructor", () => {
-  it("should construct a new LinkedList", () => {
+describe('Testing LinkedList constructor', () => {
+  it('should construct a new LinkedList', () => {
     expect(testlist).toBeDefined();
   });
-  it("should construct a new LinkedList that is empty when constructed", () => {
+  it('should construct a new LinkedList that is empty when constructed', () => {
     expect(testlist.head).toBeNull();
   });
 });
