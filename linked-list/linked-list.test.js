@@ -105,3 +105,21 @@ describe('Testing LinkedList insertAfter method', () => {
     expect(testlist4.print()).toBe('A, F, B, E, D, C');
   });
 });
+
+const testlist5 = new LinkedList();
+testlist5.insert('A');
+testlist5.insert('B');
+testlist5.insert('C');
+testlist5.insert('D');
+
+describe('Testing LinkedList offsetFromEnd method', () => {
+  it('should return A with an offset of 0', () => {
+    expect(testlist5.offsetFromEnd(0)).toBe('A');
+  });
+  it('should return D with an offset of 3', () => {
+    expect(testlist5.offsetFromEnd(3)).toBe('D');
+  });
+  it('should return C with an offset of 2', () => {
+    expect(testlist5.offsetFromEnd(2)).toBe('C');
+  });
+});

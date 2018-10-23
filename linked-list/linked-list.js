@@ -43,7 +43,7 @@ class LinkedList {
 
   append(value) {
     let currentNode = this.head;
-    while(currentNode.next !== null) {
+    while (currentNode.next !== null) {
       currentNode = currentNode.next;
     }
     let newNode = new Node(value);
@@ -53,7 +53,7 @@ class LinkedList {
 
   insertBefore(value, newVal) {
     let currentNode = this.head;
-    while(currentNode.next.value !== value) {
+    while (currentNode.next.value !== value) {
       currentNode = currentNode.next;
     }
     let newNode = new Node(newVal);
@@ -63,7 +63,7 @@ class LinkedList {
 
   insertAfter(value, newVal) {
     let currentNode = this.head;
-    while(currentNode.value !== value) {
+    while (currentNode.value !== value) {
       currentNode = currentNode.next;
     }
     let newNode = new Node(newVal);
@@ -71,6 +71,25 @@ class LinkedList {
     currentNode.next = newNode;
   }
 
+  offsetFromEnd(k) {
+    let leaderNode = this.head;
+    let followerCount = -k;
+    let followerNode;
+    if (followerCount === 0) {
+      followerNode = this.head;
+    }
+    while (leaderNode.next !== null) {
+      followerCount++;
+      if (followerCount === 0) {
+        followerNode = this.head;
+      }
+      else if (followerCount > 0) {
+        followerNode = followerNode.next;
+      }
+      leaderNode = leaderNode.next;
+    }
+    return followerNode.value;
+  }
 }
 
 module.exports = LinkedList;
