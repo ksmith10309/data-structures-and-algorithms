@@ -43,6 +43,7 @@ class PseudoQueue {
       while (this.dequeueStack.peek() !== null) {
         this.enqueueStack.push(this.dequeueStack.pop().value);
       }
+      this.enqueueStack.push(value);
     }
   }
   dequeue() {
