@@ -44,6 +44,25 @@ class HashTable {
     }
   }
 
+  serialize() {
+    let text = JSON.stringify(this);
+    return text;
+  }
+
+  static deserialize(text) {
+    let parsed = JSON.parse(text);
+    let table = new HashTable(parsed.size);
+    parsed.map.forEach(bucket => {
+      if (bucket !== null) {
+        for (let i = 0; i < bucket.length; i++) {
+          table.add(Object.keys(bucket[i])[0], Object.values(bucket[i])[0]);
+        }
+      }
+    });
+
+    return table;
+  }
+
 }
 
 module.exports = HashTable;

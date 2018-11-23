@@ -54,3 +54,31 @@ describe('Testing HashTable getHash method', () => {
     expect(table.getHash('Luna')).toBe('Cannot find Luna');
   });
 });
+
+describe('Testing HashTable serialize method', () => {
+  it('should stringify hash table data', () => {
+    expect(typeof table.serialize()).toBe('string');
+  });
+  it('should contain Katherine after serialization', () => {
+    expect(table.serialize()).toMatch('Katherine');
+  });
+  it('should contain Jen after serialization', () => {
+    expect(table.serialize()).toMatch('Jen');
+  });
+});
+
+
+describe('Testing HashTable deserialize method', () => {
+  let text = table.serialize();
+
+  it('should parse hash table data', () => {
+    expect(typeof HashTable.deserialize(text)).toBe('object');
+    expect(HashTable.deserialize(text).size).toBe(6);
+  });
+  it('should contain Katherine after deserialization', () => {
+    expect(HashTable.deserialize(text).map).toContainEqual([{Katherine: 'Student'}]);
+  });
+  it('should contain Jen after deserialization', () => {
+    expect(HashTable.deserialize(text).map).toContainEqual([{Jen: 'Student'}]);
+  });
+});
